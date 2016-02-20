@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
@@ -830,7 +830,7 @@ namespace OKTRAIO.Champions
         {
             var target = TargetSelector.GetTarget(_q.Range, DamageType.Mixed);
 
-            if (_q.IsReady() && Value.Use("harass.q"))
+            if (target != null && _q.IsReady() && Value.Use("harass.q"))
             {
                 if ((_q.GetPrediction(target).HitChancePercent >= Value.Get("harass.q.pred")) &&
                     (Player.Instance.ManaPercent >= Value.Get("harass.q.mana")))
@@ -856,7 +856,7 @@ namespace OKTRAIO.Champions
                     }
                 }
 
-                else if ((_w.GetPrediction(target).HitChancePercent >= Value.Get("harass.w.pred")) &&
+                else if (target != null && (_w.GetPrediction(target).HitChancePercent >= Value.Get("harass.w.pred")) &&
                          (Player.Instance.ManaPercent >= Value.Get("harass.w.mana")))
                 {
                     _w.Cast(_w.GetPrediction(target).CastPosition);

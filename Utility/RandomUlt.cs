@@ -97,7 +97,7 @@ namespace OKTRAIO.Utility
                         .Where(
                             enemy =>
                                 !CheckResurrect(enemy.Unit)
-                                && (!(Game.Time - enemy.RecallData.Started <= Value.Get("randomult.delay")))))
+                                && (!((Game.Time - enemy.RecallData.Started) * 1000 <= Value.Get("randomult.delay")))))
             {
                 var dist = ((enemy.RecallData.Started - enemy.LastSeen) / 1000 * enemy.Unit.MoveSpeed);
                 // - enemy.Unit.MoveSpeed / 4;

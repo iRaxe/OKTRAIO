@@ -25,7 +25,7 @@ namespace OKTRAIO.Utility
         /// <param name="champion">The players champion name (If needed)</param>
         protected UtilityAddon(Menu menu, Champion? champion = null)
         {
-            if (champion != null && !CheckSupported(champion.Value)) return;
+            if(!IsSupported(champion)) return;
 
             if (menu != null)
             {
@@ -40,11 +40,19 @@ namespace OKTRAIO.Utility
             
         }
 
-        private bool CheckSupported(Champion champion)
+        public bool IsSupported(Champion? champion)
         {
+            if (champion == null) return CheckSupported(Player.Instance.Hero);
             var ui = GetUtilityInfo();
-            return ui.RequiredChampions.Any(c => c == champion);
+            return ui.RequiredChampions.Any(c => c == champion) || CheckSupported(champion.Value);
         }
+
+        /// <summary>
+        /// Check if this addon is supported.
+        /// </summary>
+        /// <param name="champion">The value of Player.Instance.Hero</param>
+        /// <returns>Return true if the addon is supported, otherwise false</returns>
+        protected virtual bool CheckSupported(Champion champion) { return false; }
 
         /// <summary>
         /// Global Initialization, private so you can not reload the menu.

@@ -1,30 +1,21 @@
-﻿namespace OKTRAIO
-{
-using System;
-using System.ComponentModel;
+﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Media;
-using System.Net;
-
+//using System.Media;
 using EloBuddy;
-using EloBuddy.Sandbox;
 using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Menu.Values;
-
 using OKTRAIO.Champions;
 using OKTRAIO.Database.Icons;
 using OKTRAIO.Menu_Settings;
 using OKTRAIO.Utility;
-using OKTRAIO.Utility.SkinManager;
-using OKTRAIO.Utility.Tracker;
 using Activator = System.Activator;
 
+namespace OKTRAIO
+{
     internal class Brain
     {
         public static AIOChampion Champion;
 
-        private static SoundPlayer _welcomeSound;
+        //private static SoundPlayer _welcomeSound;
 
         private static void Main(string[] args)
         {
@@ -49,19 +40,16 @@ using Activator = System.Activator;
             var champion = Type.GetType("OKTRAIO.Champions." + Player.Instance.ChampionName);
             if (champion != null)
             {
-                Console.WriteLine("[MarksmanAIO] " + Player.Instance.ChampionName + " Loaded");
+                Console.WriteLine("[OKTRAIO] " + Player.Instance.ChampionName + " Loaded");
                 IconManager.Init();
                 Champion = (AIOChampion) Activator.CreateInstance(champion);
                 Events.Init();
-                
+
                 Value.Init();
                 Champion.Init();
                 //JsonSettings.Init();
                 UtilityManager.Activator.LoadSpells();
-                if (MainMenu.Menu["playsound"].Cast<CheckBox>().CurrentValue)
-                {
-                    PlayWelcome();
-                }
+                // if (MainMenu.Menu["playsound"].Cast<CheckBox>().CurrentValue) PlayWelcome(); 
                 Chat.Print("MarksmanAIO: " + Player.Instance.ChampionName + " Loaded", Color.CornflowerBlue);
             }
             else
@@ -72,7 +60,7 @@ using Activator = System.Activator;
             Humanizer.Init();
         }
 
-        private static void PlayWelcome()
+        /*private static void PlayWelcome()
         {
             try
             {
@@ -122,6 +110,7 @@ using Activator = System.Activator;
             };
             _welcomeSound.Load();
             _welcomeSound.Play();
-        }
+        }*/
+        //Function will be enabled again with the new OKTR AIO.
     }
 }
