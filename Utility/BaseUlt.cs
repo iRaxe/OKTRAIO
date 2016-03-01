@@ -294,10 +294,10 @@ namespace OKTRAIO.Utility
                     var damage = new float[] { 250, 350, 450 }[level]
                                  + new float[] { 25, 30, 35 }[level] / 100 * (target.MaxHealth - target.Health)
                                  + 1 * Player.Instance.FlatPhysicalDamageMod;
-                    Chat.Print("Flat Damage: " + new float[] { 250, 350, 450 }[level]);
+                    /*Chat.Print("Flat Damage: " + new float[] { 250, 350, 450 }[level]);
                     Chat.Print("Bonus Damage: " + new float[] { 25, 30, 35 }[level] / 100 * (target.MaxHealth - target.Health));
                     Chat.Print("Damage On Unit: " + Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical, damage));
-                    Chat.Print("Unit Health: " + target.Health);
+                    Chat.Print("Unit Health: " + target.Health);*/
                     return Player.Instance.CalculateDamageOnUnit(target, DamageType.Physical, damage);
                 }
             }
