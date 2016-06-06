@@ -477,7 +477,6 @@ namespace OKTRAIO.Champions
             var bestAxe = GetBestAxe;
 
             if (bestAxe == null || (bestAxe.Object.Position.Distance(Player.Instance.ServerPosition) < 90 && Orbwalker.IsAutoAttacking && Player.Instance.CanAttack)) return;
-            Chat.Print("AXE");
             if (Value.Use("misc.axe.check") &&
                 bestAxe.Object.CountEnemiesInRange(300) > Value.Get("misc.axe.check.enemies")) return;
 
